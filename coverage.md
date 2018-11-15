@@ -131,9 +131,9 @@
   - 🔜 InputContactMessageContent
   - 🔜 ChosenInlineResult
 - Payments
-  - 🔜 sendInvoice
-  - 🔜 answerShippingQuery
-  - 🔜 answerPreCheckoutQuery
+  - ✅ sendInvoice
+  - ✅ answerShippingQuery
+  - ✅ answerPreCheckoutQuery
   - ✅ LabeledPrice
   - ✅ Invoice
   - ✅ ShippingAddress

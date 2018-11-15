@@ -1,9 +1,13 @@
 package com.kowalski7cc.botrevolution.types.payments;
 
+import com.kowalski7cc.botrevolution.types.JSONSerializable;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.List;
 import java.util.Objects;
 
-public class ShippingOption {
+public class ShippingOption implements JSONSerializable {
 
     private String id;
     private String title;
@@ -62,5 +66,12 @@ public class ShippingOption {
                 ", title='" + title + '\'' +
                 ", prices=" + prices +
                 '}';
+    }
+
+    @Override
+    public JSONObject serializeJSON() {
+        return new JSONObject().put("id", id)
+                .put("title", title)
+                .put("prices", new JSONArray(prices.stream().map(labeledPrice -> labeledPrice.serializeJSON())));
     }
 }

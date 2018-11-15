@@ -1,8 +1,11 @@
 package com.kowalski7cc.botrevolution.types.payments;
 
+import com.kowalski7cc.botrevolution.types.JSONSerializable;
+import org.json.JSONObject;
+
 import java.util.Objects;
 
-public class LabeledPrice {
+public class LabeledPrice implements JSONSerializable {
 
     private String label;
     private Integer amount;
@@ -50,5 +53,10 @@ public class LabeledPrice {
                 "label='" + label + '\'' +
                 ", amount=" + amount +
                 '}';
+    }
+
+    @Override
+    public JSONObject serializeJSON() {
+        return new JSONObject().put("label", label).put("amount", amount);
     }
 }

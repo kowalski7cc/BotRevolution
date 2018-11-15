@@ -234,7 +234,11 @@ public class TelegramBot {
 
     // PAYMENTS
 
-    // TODO Add payments
+    public SendInvoice sendInvoice() {return new SendInvoice(token, getProgrammedTimeout());}
+
+    public AnswerShippingQuery answerShippingQuery() {return new AnswerShippingQuery(token, getProgrammedTimeout());}
+
+    public AnswerPreCheckoutQuery answerPreCheckoutQuery() {return new AnswerPreCheckoutQuery(token, getProgrammedTimeout());}
 
     // GAMES
 
