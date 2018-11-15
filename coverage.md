@@ -3,10 +3,10 @@
 - Getting updates
   - ✅ Update
   - ✅ getUpdates
-  - 🔜 setWebhook
-  - 🔜 deleteWebhook
-  - 🔜 getWebhookInfo
-  - 🔜 WebhookInfo
+  - ✅ setWebhook
+  - ✅ deleteWebhook
+  - ✅ getWebhookInfo
+  - ✅ WebhookInfo
 - Available types
   - ✅ User
   - ✅ Chat

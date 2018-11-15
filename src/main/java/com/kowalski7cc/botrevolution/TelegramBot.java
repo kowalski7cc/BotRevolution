@@ -4,6 +4,7 @@ import com.kowalski7cc.botrevolution.actions.*;
 import com.kowalski7cc.botrevolution.receivers.PollingReceiver;
 import com.kowalski7cc.botrevolution.types.Update;
 import com.kowalski7cc.botrevolution.types.User;
+import com.kowalski7cc.botrevolution.types.WebhookInfo;
 import com.kowalski7cc.botrevolution.types.media.FileAttachment;
 import com.kowalski7cc.botrevolution.utils.BotMethod;
 import com.kowalski7cc.botrevolution.utils.RequestHelper;
@@ -51,6 +52,18 @@ public class TelegramBot {
     }
 
     // TELEGRAM METHODS
+
+    public SetWebhook setWebhook() {return new SetWebhook(token, getProgrammedTimeout());}
+
+    public Optional<Boolean> deleteWebhook() {
+        return RequestHelper.get(token, BotMethod.DELETEWEBHOOK, null, getProgrammedTimeout())
+                .map(object -> ResponseDecoder.decodeBoolean(object));
+    }
+
+    public Optional<WebhookInfo> getWebhookInfo() {
+        return RequestHelper.get(token, BotMethod.GETWEBHOOKINFO, null, getProgrammedTimeout())
+                .map(object -> WebhookInfoDecoder.decode(ResponseDecoder.decode(object)));
+    }
 
     public Optional<User> getMe() {
         return RequestHelper.get(token, BotMethod.GETME, null, getProgrammedTimeout())
@@ -236,6 +249,5 @@ public class TelegramBot {
     public void downloadFile(FileAttachment origin, File destination) throws IOException {
         RequestHelper.downloadFile(origin, destination, token, getProgrammedTimeout());
     }
-
 
 }

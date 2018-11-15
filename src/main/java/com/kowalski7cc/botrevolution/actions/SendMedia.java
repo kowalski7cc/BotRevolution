@@ -40,7 +40,6 @@ public abstract class SendMedia extends MethodBuilder<Message> {
             if (thumb != null)
                 payload.put("thumb", thumb);
             try {
-                //response = RequestHelper.postFile(url, (File) object, timeout, type);
                 return Optional.of(MessageDecoder.decode(
                         ResponseDecoder.decode(
                                 RequestHelper.postMedia(url, payload, timeout)
