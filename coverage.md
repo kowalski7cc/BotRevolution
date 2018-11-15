@@ -24,25 +24,25 @@
   - ✅ Venue
   - ✅ UserProfilePhotos
   - ✅ File
-  - ❌ ReplyKeyboardMarkup
-  - ❌ KeyboardButton
-  - ❌ ReplyKeyboardRemove
-  - ❌ InlineKeyboardMarkup
-  - ❌ InlineKeyboardButton
+  - 🔜 ReplyKeyboardMarkup
+  - 🔜 KeyboardButton
+  - ✅ ReplyKeyboardRemove
+  - ✅ InlineKeyboardMarkup
+  - ✅ InlineKeyboardButton
   - ✅ CallbackQuery
   - ✅ ForceReply
   - ✅ ChatPhoto
   - ✅ ChatMember
-  - ❌ ResponseParameters
-  - ✅ InputMedia
-  - ✅ InputMediaPhoto
-  - ✅ InputMediaVideo
-  - ✅ InputMediaAnimation
-  - ✅ InputMediaAudio
-  - ✅ InputMediaDocument
+  - 🔜 ResponseParameters
+  - 🔜 InputMedia
+  - 🔜 InputMediaPhoto
+  - 🔜 InputMediaVideo
+  - 🔜 InputMediaAnimation
+  - 🔜 InputMediaAudio
+  - 🔜 InputMediaDocument
   - ✅ InputFile
   - ✅ Sending files
-  - ❌ Inline mode objects
+  - 🔜 Inline mode objects
 - Available methods
   - ✅ getMe
   - ✅ sendMessage
@@ -52,9 +52,9 @@
   - ✅ sendAudio
   - ✅ sendDocument
   - ✅ sendVideo
-  - 🔜 sendAnimation
-  - 🔜 sendVoice
-  - 🔜 sendVideoNote
+  - ✅ sendAnimation
+  - ✅ sendVoice
+  - ✅ sendVideoNote
   - 🔜 sendMediaGroup
   - ✅ sendLocation
   - ✅ editMessageLiveLocation
@@ -69,71 +69,71 @@
   - ✅ restrictChatMember
   - ✅ promoteChatMember
   - ✅ exportChatInviteLink
-  - 🔜 setChatPhoto
+  - ✅ setChatPhoto
   - ✅ deleteChatPhoto
   - ✅ setChatTitle
-  - 🔜 setChatDescription
-  - 🔜 pinChatMessage
-  - 🔜 unpinChatMessage
-  - 🔜 leaveChat
-  - 🔜 getChat
-  - 🔜 getChatAdministrators
-  - 🔜 getChatMembersCount
-  - 🔜 getChatMember
-  - 🔜 setChatStickerSet
-  - 🔜 deleteChatStickerSet
+  - ✅ setChatDescription
+  - ✅ pinChatMessage
+  - ✅ unpinChatMessage
+  - ✅ leaveChat
+  - ✅ getChat
+  - ✅ getChatAdministrators
+  - ✅ getChatMembersCount
+  - ✅ getChatMember
+  - ✅ setChatStickerSet
+  - ✅ deleteChatStickerSet
   - ❌ answerCallbackQuery
 - Updating messages
-  - 🔜 editMessageText
-  - 🔜 editMessageCaption
-  - 🔜 editMessageMedia
-  - 🔜 editMessageReplyMarkup
-  - 🔜 deleteMessage
+  - ✅ editMessageText
+  - ✅ editMessageCaption
+  - ❌ editMessageMedia
+  - ✅ editMessageReplyMarkup
+  - ✅ deleteMessage
 - Stickers
   - ✅ Sticker
   - ✅ StickerSet
   - ✅ MaskPosition
-  - 🔜 sendSticker
-  - 🔜 getStickerSet
-  - 🔜 uploadStickerFile
-  - 🔜 createNewStickerSet
-  - 🔜 addStickerToSet
-  - 🔜 setStickerPositionInSet
-  - 🔜 deleteStickerFromSet
+  - ✅ sendSticker
+  - ✅ getStickerSet
+  - ✅ uploadStickerFile
+  - ✅ createNewStickerSet
+  - ✅ addStickerToSet
+  - ✅ setStickerPositionInSet
+  - ✅ deleteStickerFromSet
 - Inline mode
-  - ❌ InlineQuery
-  - ❌ answerInlineQuery
-  - ❌ InlineQueryResult
-  - ❌ InlineQueryResultArticle
-  - ❌ InlineQueryResultPhoto
-  - ❌ InlineQueryResultGif
-  - ❌ InlineQueryResultMpeg4Gif
-  - ❌ InlineQueryResultVideo
-  - ❌ InlineQueryResultAudio
-  - ❌ InlineQueryResultVoice
-  - ❌ InlineQueryResultDocument
-  - ❌ InlineQueryResultLocation
-  - ❌ InlineQueryResultVenue
-  - ❌ InlineQueryResultContact
-  - ❌ InlineQueryResultGame
-  - ❌ InlineQueryResultCachedPhoto
-  - ❌ InlineQueryResultCachedGif
-  - ❌ InlineQueryResultCachedMpeg4Gif
-  - ❌ InlineQueryResultCachedSticker
-  - ❌ InlineQueryResultCachedDocument
-  - ❌ InlineQueryResultCachedVideo
-  - ❌ InlineQueryResultCachedVoice
-  - ❌ InlineQueryResultCachedAudio
-  - ❌ InputMessageContent
-  - ❌ InputTextMessageContent
-  - ❌ InputLocationMessageContent
-  - ❌ InputVenueMessageContent
-  - ❌ InputContactMessageContent
-  - ❌ ChosenInlineResult
+  - 🔜 InlineQuery
+  - 🔜 answerInlineQuery
+  - 🔜 InlineQueryResult
+  - 🔜 InlineQueryResultArticle
+  - 🔜 InlineQueryResultPhoto
+  - 🔜 InlineQueryResultGif
+  - 🔜 InlineQueryResultMpeg4Gif
+  - 🔜 InlineQueryResultVideo
+  - 🔜 InlineQueryResultAudio
+  - 🔜 InlineQueryResultVoice
+  - 🔜 InlineQueryResultDocument
+  - 🔜 InlineQueryResultLocation
+  - 🔜 InlineQueryResultVenue
+  - 🔜 InlineQueryResultContact
+  - 🔜 InlineQueryResultGame
+  - 🔜 InlineQueryResultCachedPhoto
+  - 🔜 InlineQueryResultCachedGif
+  - 🔜 InlineQueryResultCachedMpeg4Gif
+  - 🔜 InlineQueryResultCachedSticker
+  - 🔜 InlineQueryResultCachedDocument
+  - 🔜 InlineQueryResultCachedVideo
+  - 🔜 InlineQueryResultCachedVoice
+  - 🔜 InlineQueryResultCachedAudio
+  - 🔜 InputMessageContent
+  - 🔜 InputTextMessageContent
+  - 🔜 InputLocationMessageContent
+  - 🔜 InputVenueMessageContent
+  - 🔜 InputContactMessageContent
+  - 🔜 ChosenInlineResult
 - Payments
-  - ❌ sendInvoice
-  - ❌ answerShippingQuery
-  - ❌ answerPreCheckoutQuery
+  - 🔜 sendInvoice
+  - 🔜 answerShippingQuery
+  - 🔜 answerPreCheckoutQuery
   - ✅ LabeledPrice
   - ✅ Invoice
   - ✅ ShippingAddress
@@ -159,9 +159,9 @@
   - ❌ PassportElementErrorTranslationFiles
   - ❌ PassportElementErrorUnspecified
 - Games
-  - 🔜 sendGame
-  - 🔜 Game
-  - 🔜 CallbackGame
-  - 🔜 setGameScore
-  - 🔜 getGameHighScores
-  - 🔜 GameHighScore
+  - ✅ sendGame
+  - ✅ Game
+  - ✅ CallbackGame
+  - ✅ setGameScore
+  - ✅ getGameHighScores
+  - ✅ GameHighScore

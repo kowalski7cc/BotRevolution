@@ -7,8 +7,7 @@ import com.kowalski7cc.botrevolution.types.User;
 import com.kowalski7cc.botrevolution.types.media.FileAttachment;
 import com.kowalski7cc.botrevolution.utils.BotMethod;
 import com.kowalski7cc.botrevolution.utils.RequestHelper;
-import com.kowalski7cc.botrevolution.utils.decoder.ResponseDecoder;
-import com.kowalski7cc.botrevolution.utils.decoder.UserDecoder;
+import com.kowalski7cc.botrevolution.utils.decoder.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -80,7 +79,13 @@ public class TelegramBot {
         return new SendVideo(token, getProgrammedTimeout());
     }
 
-    // TODO ADD MISSING SEND ANIMATION, VOICE, VIDEO NOTE, MEDIA GROUP.
+    public SendAnimation sendAnimation() { return new SendAnimation(token, getProgrammedTimeout());}
+
+    public SendVoice sendVoice() {return new SendVoice(token, getProgrammedTimeout());}
+
+    public SendVideoNote sendVideoNote() {return  new SendVideoNote(token, getProgrammedTimeout());}
+
+    // TODO ADD MISSING SEND MEDIA GROUP.
 
     public SendLocation sendLocation(){
         return new SendLocation(token, getProgrammedTimeout());
@@ -145,6 +150,86 @@ public class TelegramBot {
     public DeleteChatPhoto deleteChatPhoto() {
         return new DeleteChatPhoto(token, getProgrammedTimeout());
     }
+
+    public SetChatTitle setChatTitle() {
+        return new SetChatTitle(token, getProgrammedTimeout());
+    }
+
+    public SetChatDescription setChatDescription() {
+        return new SetChatDescription(token, getProgrammedTimeout());
+    }
+
+    public PinChatMessage pinChatMessage() {
+        return new PinChatMessage(token, getProgrammedTimeout());
+    }
+
+    public UnpinChatMessage unpinChatMessage() {
+        return new UnpinChatMessage(token, getProgrammedTimeout());
+    }
+
+    public LeaveChat leaveChat() {
+        return new LeaveChat(token, getProgrammedTimeout());
+    }
+
+    public GetChat getChat() {
+        return new GetChat(token, getProgrammedTimeout());
+    }
+
+    public GetChatAdministrators getChatAdministrators() {return new GetChatAdministrators(token, getProgrammedTimeout());}
+
+    public GetChatMembersCount getChatMembersCount() {return new GetChatMembersCount(token, getProgrammedTimeout());}
+
+    public GetChatMember getChatMember() {return new GetChatMember(token, getProgrammedTimeout());}
+
+    public SetChatStickerSet setChatStickerSet() {return new SetChatStickerSet(token, getProgrammedTimeout());}
+
+    public DeleteChatStickerSet deleteChatStickerSet() {return new DeleteChatStickerSet(token, getProgrammedTimeout());}
+
+    // TODO Add here answerCallbackQuery()
+
+    // UPDATING MESSAGES
+
+    public EditMessageText editMessageText() {return new EditMessageText(token, getProgrammedTimeout());}
+
+    public EditMessageCaption editMessageCaption() {return new EditMessageCaption(token, getProgrammedTimeout());}
+
+    // TODO Add here editMessageMedia()
+
+    public EditMessageReplyMarkup editMessageReplyMarkup() {return new EditMessageReplyMarkup(token, getProgrammedTimeout());}
+
+    public DeleteMessage deleteMessage() {return new DeleteMessage(token, getProgrammedTimeout());}
+
+    // STICKERS
+
+    public SendSticker sendSticker() {return new SendSticker(token, getProgrammedTimeout());}
+
+    public GetStickerSet getStickerSet() {return new GetStickerSet(token, getProgrammedTimeout());}
+
+    public UploadStickerFile uploadStickerFile() {return new UploadStickerFile(token, getProgrammedTimeout());}
+
+    public CreateNewStickerSet createNewStickerSet() {return new CreateNewStickerSet(token, getProgrammedTimeout());}
+
+    public AddStickerToSet addStickerToSet() {return new AddStickerToSet(token, getProgrammedTimeout());}
+
+    public SetStickerPositionInSet setStickerPositionInSet() {return new SetStickerPositionInSet(token, getProgrammedTimeout());}
+
+    public DeleteStickerFromSet deleteStickerFromSet() {return new DeleteStickerFromSet(token, getProgrammedTimeout());}
+
+    // INLINE MODE
+
+    // TODO Add inline mode
+
+    // PAYMENTS
+
+    // TODO Add payments
+
+    // GAMES
+
+    public SendGame sendGame() {return new SendGame(token, getProgrammedTimeout());}
+
+    public SetGameScore setGameScore() {return new SetGameScore(token, getProgrammedTimeout());}
+
+    public GetGameHighScores getGameHighScores() {return new GetGameHighScores(token, getProgrammedTimeout());}
 
     // SERVICE CODE
 

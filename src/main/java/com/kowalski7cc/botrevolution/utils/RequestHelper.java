@@ -3,6 +3,7 @@ package com.kowalski7cc.botrevolution.utils;
 import com.kowalski7cc.botrevolution.types.media.FileAttachment;
 import com.kowalski7cc.botrevolution.utils.decoder.FileAttachmentDecoder;
 import com.kowalski7cc.botrevolution.utils.decoder.ResponseDecoder;
+import com.kowalski7cc.botrevolution.utils.decoder.TelegramException;
 import okhttp3.*;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONObject;
@@ -104,7 +105,7 @@ public class RequestHelper {
         if (response.isSuccessful()) {
             return response.body().string();
         } else {
-            throw new IOException(response.toString());
+            throw new TelegramException(new JSONObject(response.body().string()));
         }
     }
 

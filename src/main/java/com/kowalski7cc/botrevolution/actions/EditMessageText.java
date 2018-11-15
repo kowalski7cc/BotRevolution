@@ -1,6 +1,7 @@
 package com.kowalski7cc.botrevolution.actions;
 
 import com.kowalski7cc.botrevolution.types.Message;
+import com.kowalski7cc.botrevolution.types.ParseMode;
 import com.kowalski7cc.botrevolution.types.chat.Chat;
 import com.kowalski7cc.botrevolution.types.repymarkups.inlinekeyboard.InlineKeyboardMarkup;
 import com.kowalski7cc.botrevolution.utils.BotMethod;
@@ -13,50 +14,68 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
-public class StopMessageLiveLocation extends MethodBuilder<Message> {
+public class EditMessageText extends MethodBuilder<Message> {
 
     private String chatID;
     private Integer messageID;
     private String inlineMessageID;
+    private String text;
+    private ParseMode parseMode;
+    private Boolean disableNotification;
     private InlineKeyboardMarkup replyMarkup;
 
-    public StopMessageLiveLocation setChatID(String chatID) {
+    public EditMessageText(String token, Integer timeout) {
+        super(token, timeout);
+    }
+
+    public EditMessageText setText(String text) {
+        this.text = Objects.requireNonNull(text);
+        return this;
+    }
+
+    public EditMessageText setChatID(String chatID) {
         this.chatID = chatID;
         return this;
     }
 
-    public StopMessageLiveLocation setChatID(Long chatID) {
-        this.chatID = chatID.toString();
-        return this;
-    }
-
-    public StopMessageLiveLocation setChatID(Chat chat) {
+    public EditMessageText setChatID(Chat chat) {
         this.chatID = chat.getId().toString();
         return this;
     }
 
-    public StopMessageLiveLocation setMessageID(Integer messageID) {
+    public EditMessageText setChatID(Long chatID) {
+        this.chatID = chatID.toString();
+        return this;
+    }
+
+    public EditMessageText setMessageID(Integer messageID) {
         this.messageID = messageID;
         return this;
     }
 
-    public StopMessageLiveLocation setMessageID(Message message) {
+    public EditMessageText setMessageID(Message message) {
         this.messageID = message.getMessageID();
         return this;
     }
 
-    public StopMessageLiveLocation setInlineMessageID(String inlineMessageID) {
+    public EditMessageText setInlineMessageID(String inlineMessageID) {
         this.inlineMessageID = inlineMessageID;
         return this;
     }
 
-    public StopMessageLiveLocation setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
-        this.replyMarkup = replyMarkup;
+    public EditMessageText setParseMode(ParseMode parseMode) {
+        this.parseMode = parseMode;
         return this;
     }
 
-    public StopMessageLiveLocation(String token, Integer timeout) {
-        super(token, timeout);
+    public EditMessageText setDisableNotification(Boolean disableNotification) {
+        this.disableNotification = disableNotification;
+        return this;
+    }
+
+    public EditMessageText setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
+        this.replyMarkup = replyMarkup;
+        return this;
     }
 
     @Override
@@ -70,9 +89,11 @@ public class StopMessageLiveLocation extends MethodBuilder<Message> {
         } else {
             throw new IllegalArgumentException("You must provide chatID and messageID or inlineMessageID");
         }
-        if (replyMarkup != null)
-            parameters.put("reply_markup", replyMarkup.serializeJSON().toString());
-        return RequestHelper.get(token, BotMethod.STOPMESSAGELIVELOCATION, parameters, timeout)
+        parameters.put("text", text);
+        parameters.put("parse_mode", parseMode.toString());
+        parameters.put("disable_web_page_preview", disableNotification.toString());
+        parameters.put("reply_markup", replyMarkup.serializeJSON().toString());
+        return RequestHelper.get(token, BotMethod.EDITMESSAGETEXT, parameters, timeout)
                 .map(object -> MessageDecoder.decode(ResponseDecoder.decode(object)));
     }
 }

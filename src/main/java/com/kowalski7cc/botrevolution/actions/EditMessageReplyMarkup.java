@@ -1,7 +1,6 @@
 package com.kowalski7cc.botrevolution.actions;
 
 import com.kowalski7cc.botrevolution.types.Message;
-import com.kowalski7cc.botrevolution.types.chat.Chat;
 import com.kowalski7cc.botrevolution.types.repymarkups.inlinekeyboard.InlineKeyboardMarkup;
 import com.kowalski7cc.botrevolution.utils.BotMethod;
 import com.kowalski7cc.botrevolution.utils.RequestHelper;
@@ -13,50 +12,35 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
-public class StopMessageLiveLocation extends MethodBuilder<Message> {
+public class EditMessageReplyMarkup extends MethodBuilder<Message> {
 
     private String chatID;
     private Integer messageID;
     private String inlineMessageID;
     private InlineKeyboardMarkup replyMarkup;
 
-    public StopMessageLiveLocation setChatID(String chatID) {
-        this.chatID = chatID;
+    public EditMessageReplyMarkup(String token, Integer timeout) {
+        super(token, timeout);
+    }
+
+    public EditMessageReplyMarkup setChatID(String chatID) {
+        this.chatID = Objects.requireNonNull(chatID);
         return this;
     }
 
-    public StopMessageLiveLocation setChatID(Long chatID) {
-        this.chatID = chatID.toString();
+    public EditMessageReplyMarkup setMessageID(Integer messageID) {
+        this.messageID = Objects.requireNonNull(messageID);
         return this;
     }
 
-    public StopMessageLiveLocation setChatID(Chat chat) {
-        this.chatID = chat.getId().toString();
+    public EditMessageReplyMarkup setInlineMessageID(String inlineMessageID) {
+        this.inlineMessageID = Objects.requireNonNull(inlineMessageID);
         return this;
     }
 
-    public StopMessageLiveLocation setMessageID(Integer messageID) {
-        this.messageID = messageID;
-        return this;
-    }
-
-    public StopMessageLiveLocation setMessageID(Message message) {
-        this.messageID = message.getMessageID();
-        return this;
-    }
-
-    public StopMessageLiveLocation setInlineMessageID(String inlineMessageID) {
-        this.inlineMessageID = inlineMessageID;
-        return this;
-    }
-
-    public StopMessageLiveLocation setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
+    public EditMessageReplyMarkup setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
         this.replyMarkup = replyMarkup;
         return this;
-    }
-
-    public StopMessageLiveLocation(String token, Integer timeout) {
-        super(token, timeout);
     }
 
     @Override
@@ -70,9 +54,8 @@ public class StopMessageLiveLocation extends MethodBuilder<Message> {
         } else {
             throw new IllegalArgumentException("You must provide chatID and messageID or inlineMessageID");
         }
-        if (replyMarkup != null)
-            parameters.put("reply_markup", replyMarkup.serializeJSON().toString());
-        return RequestHelper.get(token, BotMethod.STOPMESSAGELIVELOCATION, parameters, timeout)
+        parameters.put("reply_markup", replyMarkup.serializeJSON().toString());
+        return RequestHelper.get(token, BotMethod.EDITMESSAGEREPLYMARKUP, parameters, timeout)
                 .map(object -> MessageDecoder.decode(ResponseDecoder.decode(object)));
     }
 }

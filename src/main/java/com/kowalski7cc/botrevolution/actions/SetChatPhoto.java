@@ -1,9 +1,16 @@
 package com.kowalski7cc.botrevolution.actions;
 
 import com.kowalski7cc.botrevolution.types.chat.Chat;
-import org.apache.commons.lang3.NotImplementedException;
+import com.kowalski7cc.botrevolution.utils.BotMethod;
+import com.kowalski7cc.botrevolution.utils.RequestHelper;
+import com.kowalski7cc.botrevolution.utils.decoder.ResponseDecoder;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 public class SetChatPhoto extends MethodBuilder<Boolean> {
@@ -37,6 +44,19 @@ public class SetChatPhoto extends MethodBuilder<Boolean> {
 
     @Override
     public Optional<Boolean> send() {
-        throw new NotImplementedException("");
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put("chat_id", Objects.requireNonNull(chatID));
+        String url = RequestHelper.buildUrl(token, BotMethod.SETCHATPHOTO, parameters);
+        Map<String, Object> payload = new HashMap<>();
+        payload.put("photo", photo);
+        try {
+            return Optional.of(ResponseDecoder.decodeBoolean(
+                    RequestHelper.postMedia(url, payload, timeout)
+            ));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException ignored) {
+        }
+        return Optional.empty();
     }
 }

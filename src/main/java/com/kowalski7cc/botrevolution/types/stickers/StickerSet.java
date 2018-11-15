@@ -2,6 +2,7 @@ package com.kowalski7cc.botrevolution.types.stickers;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class StickerSet {
 
@@ -14,6 +15,13 @@ public class StickerSet {
         this.name = Objects.requireNonNull(name);
         this.title = Objects.requireNonNull(title);
         this.containsMask = Objects.requireNonNull(containsMask);
+        this.stickers = Objects.requireNonNull(stickers);
+    }
+
+    public StickerSet(String name, String title, List<Sticker> stickers) {
+        this.name = Objects.requireNonNull(name);
+        this.title = Objects.requireNonNull(title);
+        this.containsMask = false;
         this.stickers = Objects.requireNonNull(stickers);
     }
 
@@ -35,12 +43,12 @@ public class StickerSet {
         return this;
     }
 
-    public Boolean getContainsMask() {
-        return containsMask;
+    public Optional<Boolean> getContainsMask() {
+        return Optional.ofNullable(containsMask);
     }
 
     public StickerSet setContainsMask(Boolean containsMask) {
-        this.containsMask = Objects.requireNonNull(containsMask);
+        this.containsMask = containsMask == null?false:containsMask;
         return this;
     }
 

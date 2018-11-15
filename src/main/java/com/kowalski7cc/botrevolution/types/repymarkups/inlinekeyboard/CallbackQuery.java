@@ -1,4 +1,4 @@
-package com.kowalski7cc.botrevolution.types.inlinekeyboard;
+package com.kowalski7cc.botrevolution.types.repymarkups.inlinekeyboard;
 
 import com.kowalski7cc.botrevolution.types.Message;
 import com.kowalski7cc.botrevolution.types.User;

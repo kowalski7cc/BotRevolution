@@ -11,90 +11,94 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
-public class SendAudio extends SendMedia {
+public class SendAnimation extends SendMedia {
 
     private String chatID;
-    private Object audio;
+    private Object animation;
+    private Integer duration;
+    private Integer width;
+    private Integer height;
+    private Object thumb;
     private String caption;
     private ParseMode parseMode;
-    private Integer duration;
-    private String performer;
-    private String title;
-    private Object thumb;
     private Boolean disableNotification;
     private Integer replyToMessageID;
     private ReplyMarkup replyMarkup;
 
-    public SendAudio(String token, Integer timeout) {
+    public SendAnimation(String token, Integer timeout) {
         super(token, timeout);
     }
 
-    public SendAudio setChatID(String chatID) {
-        this.chatID = chatID;
+    public String getChatID() {
+        return chatID;
+    }
+
+    public SendAnimation setChatID(String chatID) {
+        this.chatID = Objects.requireNonNull(chatID);
         return this;
     }
 
-    public SendAudio setChatID(Chat chat) {
-        this.chatID = chat.getId().toString();
+    public SendAnimation setChatID(Long chatID) {
+        this.chatID = Objects.requireNonNull(chatID.toString());
         return this;
     }
 
-    public SendAudio setChatID(Long chatID) {
-        this.chatID = chatID.toString();
+    public SendAnimation setChatID(Chat chat) {
+        this.chatID = Objects.requireNonNull(chat.getId().toString());
         return this;
     }
 
-    public SendAudio setAudio(Object audio) {
-        this.audio = audio;
+    public SendAnimation setAnimation(Object animation) {
+        this.animation = Objects.requireNonNull(animation);
         return this;
     }
 
-    public SendAudio setCaption(String caption) {
-        this.caption = caption;
-        return this;
-    }
-
-    public SendAudio setParseMode(ParseMode parseMode) {
-        this.parseMode = parseMode;
-        return this;
-    }
-
-    public SendAudio setDuration(Integer duration) {
+    public SendAnimation setDuration(Integer duration) {
         this.duration = duration;
         return this;
     }
 
-    public SendAudio setPerformer(String performer) {
-        this.performer = performer;
+    public SendAnimation setWidth(Integer width) {
+        this.width = width;
         return this;
     }
 
-    public SendAudio setTitle(String title) {
-        this.title = title;
+    public SendAnimation setHeight(Integer height) {
+        this.height = height;
         return this;
     }
 
-    public SendAudio setThumb(Object thumb) {
+    public SendAnimation setThumb(Object thumb) {
         this.thumb = thumb;
         return this;
     }
 
-    public SendAudio setDisableNotification(Boolean disableNotification) {
+    public SendAnimation setCaption(String caption) {
+        this.caption = caption;
+        return this;
+    }
+
+    public SendAnimation setParseMode(ParseMode parseMode) {
+        this.parseMode = parseMode;
+        return this;
+    }
+
+    public SendAnimation setDisableNotification(Boolean disableNotification) {
         this.disableNotification = disableNotification;
         return this;
     }
 
-    public SendAudio setReplyToMessageID(Integer replyToMessageID) {
+    public SendAnimation setReplyToMessageID(Integer replyToMessageID) {
         this.replyToMessageID = replyToMessageID;
         return this;
     }
 
-    public SendAudio setReplyToMessageID(Message message) {
+    public SendAnimation setReplyToMessageID(Message message) {
         this.replyToMessageID = message.getMessageID();
         return this;
     }
 
-    public SendAudio setReplyMarkup(ReplyMarkup replyMarkup) {
+    public SendAnimation setReplyMarkup(ReplyMarkup replyMarkup) {
         this.replyMarkup = replyMarkup;
         return this;
     }
@@ -103,8 +107,14 @@ public class SendAudio extends SendMedia {
     public Optional<Message> send() {
         Map<String, String> parameters = new HashMap<>();
         parameters.put("chat_id", Objects.requireNonNull(chatID));
+        if (parseMode != null ) {
+            parameters.put("parse_mode", parseMode.toString());
+        }
         if (caption != null ) {
             parameters.put("caption", caption);
+        }
+        if (height != null) {
+            parameters.put("height", height.toString());
         }
         if (disableNotification != null) {
             parameters.put("disable_notification", disableNotification.toString());
@@ -112,20 +122,14 @@ public class SendAudio extends SendMedia {
         if (replyToMessageID != null) {
             parameters.put("reply_to_message_id", Integer.toString(replyToMessageID));
         }
-        if (parseMode != null) {
-            parameters.put("parse_mode", parseMode.toString());
+        if (width != null) {
+            parameters.put("width", width.toString());
         }
         if (duration != null) {
             parameters.put("duration", duration.toString());
         }
-        if (performer != null) {
-            parameters.put("performer", performer);
-        }
-        if (title != null) {
-            parameters.put("title", title);
-        }
         if (replyMarkup != null)
             parameters.put("reply_markup", replyMarkup.serializeJSON().toString());
-        return sendMedia(audio, parameters, BotMethod.SENDAUDIO, "audio", thumb);
+        return sendMedia(animation, parameters, BotMethod.SENDANIMATION, "animation", thumb);
     }
 }

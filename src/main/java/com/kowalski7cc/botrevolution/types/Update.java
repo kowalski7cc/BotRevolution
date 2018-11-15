@@ -1,6 +1,6 @@
 package com.kowalski7cc.botrevolution.types;
 
-import com.kowalski7cc.botrevolution.types.inlinekeyboard.CallbackQuery;
+import com.kowalski7cc.botrevolution.types.repymarkups.inlinekeyboard.CallbackQuery;
 import com.kowalski7cc.botrevolution.types.inlinemode.ChosenInlineResult;
 import com.kowalski7cc.botrevolution.types.inlinemode.InlineQuery;
 import com.kowalski7cc.botrevolution.types.payments.PreCheckoutQuery;

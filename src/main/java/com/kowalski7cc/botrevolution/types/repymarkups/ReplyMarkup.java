@@ -1,9 +1,7 @@
 package com.kowalski7cc.botrevolution.types.repymarkups;
 
-import org.json.JSONObject;
+import com.kowalski7cc.botrevolution.types.JSONSerializable;
 
-public interface ReplyMarkup {
-
-    JSONObject serializeJSON();
+public interface ReplyMarkup extends JSONSerializable {
 
 }

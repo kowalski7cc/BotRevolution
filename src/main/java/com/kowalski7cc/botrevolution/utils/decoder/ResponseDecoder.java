@@ -19,6 +19,13 @@ public class ResponseDecoder {
         throw new TelegramException(object);
     }
 
+    public static Integer decodeInteger(JSONObject object) {
+        if(object.getBoolean("ok")) {
+            return object.getInt("result");
+        }
+        throw new TelegramException(object);
+    }
+
     public static JSONObject decode(JSONObject object) {
         if(object.getBoolean("ok")) {
             return object.getJSONObject("result");

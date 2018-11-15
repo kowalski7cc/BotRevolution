@@ -11,66 +11,72 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
-public class SendPhoto extends SendMedia {
+public class SendVoice extends SendMedia {
 
     private String chatID;
-    private Object photo;
+    private Object voice;
     private String caption;
     private ParseMode parseMode;
+    private Integer duration;
     private Boolean disableNotification;
     private Integer replyToMessageID;
     private ReplyMarkup replyMarkup;
 
-    public SendPhoto(String token, Integer timeout) {
+    public SendVoice(String token, Integer timeout) {
         super(token, timeout);
     }
 
-    public SendPhoto setChatID(String chatID) {
-        this.chatID = chatID;
+    public SendVoice setChatID(String chatID) {
+        this.chatID = Objects.requireNonNull(chatID);
         return this;
     }
 
-    public SendPhoto setChatID(Long chatID) {
-        this.chatID = chatID.toString();
+    public SendVoice setChatID(Long chatID) {
+        this.chatID = Objects.requireNonNull(chatID.toString());
         return this;
     }
 
-    public SendPhoto setChatID(Chat chat) {
-        this.chatID = chat.getId().toString();
+    public SendVoice setChatID(Chat chat) {
+        this.chatID = Objects.requireNonNull(chat.getId().toString());
         return this;
     }
 
-    public SendPhoto setPhoto(Object photo) {
-        this.photo = photo;
+    public SendVoice setVoice(Object voice) {
+        this.voice = Objects.requireNonNull(voice);
         return this;
     }
 
-    public SendPhoto setCaption(String caption) {
+    public SendVoice setCaption(String caption) {
         this.caption = caption;
         return this;
     }
 
-    public SendPhoto setParseMode(ParseMode parseMode) {
+    public SendVoice setParseMode(ParseMode parseMode) {
         this.parseMode = parseMode;
         return this;
     }
 
-    public SendPhoto setDisableNotification(Boolean disableNotification) {
+    public SendVoice setDuration(Integer duration) {
+        this.duration = duration;
+        return this;
+    }
+
+    public SendVoice setDisableNotification(Boolean disableNotification) {
         this.disableNotification = disableNotification;
         return this;
     }
 
-    public SendPhoto setReplyToMessageID(Integer replyToMessageID) {
+    public SendVoice setReplyToMessageID(Integer replyToMessageID) {
         this.replyToMessageID = replyToMessageID;
         return this;
     }
 
-    public SendPhoto setReplyToMessageID(Message message) {
+    public SendVoice setReplyToMessageID(Message message) {
         this.replyToMessageID = message.getMessageID();
         return this;
     }
 
-    public SendPhoto setReplyMarkup(ReplyMarkup replyMarkup) {
+    public SendVoice setReplyMarkup(ReplyMarkup replyMarkup) {
         this.replyMarkup = replyMarkup;
         return this;
     }
@@ -79,20 +85,23 @@ public class SendPhoto extends SendMedia {
     public Optional<Message> send() {
         Map<String, String> parameters = new HashMap<>();
         parameters.put("chat_id", Objects.requireNonNull(chatID));
+        if (replyToMessageID != null) {
+            parameters.put("reply_to_message_id", Integer.toString(replyToMessageID));
+        }
+        if (parseMode != null ) {
+            parameters.put("parse_mode", parseMode.toString());
+        }
         if (caption != null ) {
             parameters.put("caption", caption);
         }
         if (disableNotification != null) {
             parameters.put("disable_notification", disableNotification.toString());
         }
-        if (replyToMessageID != null) {
-            parameters.put("reply_to_message_id", replyToMessageID.toString());
-        }
-        if (parseMode != null) {
-            parameters.put("parse_mode", parseMode.toString());
+        if (duration != null) {
+            parameters.put("duration", duration.toString());
         }
         if (replyMarkup != null)
             parameters.put("reply_markup", replyMarkup.serializeJSON().toString());
-        return sendMedia(photo, parameters, BotMethod.SENDPHOTO, "photo");
+        return sendMedia(voice, parameters, BotMethod.SENDVOICE, "voice");
     }
 }

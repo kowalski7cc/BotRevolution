@@ -1,6 +1,7 @@
 package com.kowalski7cc.botrevolution.actions;
 
 import com.kowalski7cc.botrevolution.types.Message;
+import com.kowalski7cc.botrevolution.types.ParseMode;
 import com.kowalski7cc.botrevolution.types.chat.Chat;
 import com.kowalski7cc.botrevolution.types.repymarkups.inlinekeyboard.InlineKeyboardMarkup;
 import com.kowalski7cc.botrevolution.utils.BotMethod;
@@ -13,60 +14,60 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
-public class EditMessageLiveLocation extends MethodBuilder<Message> {
+public class EditMessageCaption extends MethodBuilder<Message> {
 
     private String chatID;
     private Integer messageID;
     private String inlineMessageID;
-    private Float latitude;
-    private Float longitude;
+    private String caption;
+    private ParseMode parseMode;
     private InlineKeyboardMarkup replyMarkup;
 
-    public EditMessageLiveLocation(String token, Integer timeout) {
+    public EditMessageCaption(String token, Integer timeout) {
         super(token, timeout);
     }
 
-    public EditMessageLiveLocation setChatID(String chatID) {
-        this.chatID = chatID;
+    public EditMessageCaption setChatID(String chatID) {
+        this.chatID = Objects.requireNonNull(chatID);
         return this;
     }
 
-    public EditMessageLiveLocation setChatID(Long chatID) {
-        this.chatID = chatID.toString();
+    public EditMessageCaption setChatID(Long chatID) {
+        this.chatID = Objects.requireNonNull(chatID.toString());
         return this;
     }
 
-    public EditMessageLiveLocation setChatID(Chat chat) {
-        this.chatID = chat.getId().toString();
+    public EditMessageCaption setChatID(Chat chat) {
+        this.chatID = Objects.requireNonNull(chat.getId().toString());
         return this;
     }
 
-    public EditMessageLiveLocation setMessageID(Integer messageID) {
-        this.messageID = messageID;
+    public EditMessageCaption setMessageID(Integer messageID) {
+        this.messageID = Objects.requireNonNull(messageID);
         return this;
     }
 
-    public EditMessageLiveLocation setMessageID(Message message) {
-        this.messageID = message.getMessageID();
+    public EditMessageCaption setMessageID(Message message) {
+        this.messageID = Objects.requireNonNull(message.getMessageID());
         return this;
     }
 
-    public EditMessageLiveLocation setInlineMessageID(String inlineMessageID) {
-        this.inlineMessageID = inlineMessageID;
+    public EditMessageCaption setInlineMessageID(String inlineMessageID) {
+        this.inlineMessageID = Objects.requireNonNull(inlineMessageID);
         return this;
     }
 
-    public EditMessageLiveLocation setLatitude(Float latitude) {
-        this.latitude = latitude;
+    public EditMessageCaption setCaption(String caption) {
+        this.caption = Objects.requireNonNull(caption);
         return this;
     }
 
-    public EditMessageLiveLocation setLongitude(Float longitude) {
-        this.longitude = longitude;
+    public EditMessageCaption setParseMode(ParseMode parseMode) {
+        this.parseMode = parseMode;
         return this;
     }
 
-    public EditMessageLiveLocation setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
+    public EditMessageCaption setReplyMarkup(InlineKeyboardMarkup replyMarkup) {
         this.replyMarkup = replyMarkup;
         return this;
     }
@@ -82,11 +83,10 @@ public class EditMessageLiveLocation extends MethodBuilder<Message> {
         } else {
             throw new IllegalArgumentException("You must provide chatID and messageID or inlineMessageID");
         }
-        parameters.put("latitude", Objects.requireNonNull(latitude.toString()));
-        parameters.put("longitude", Objects.requireNonNull(longitude.toString()));
-        if (replyMarkup != null)
-            parameters.put("reply_markup", replyMarkup.serializeJSON().toString());
-        return RequestHelper.get(token, BotMethod.EDITMESSAGELIVELOCATION, parameters, timeout)
+        parameters.put("caption", caption);
+        parameters.put("parse_mode", parseMode.toString());
+        parameters.put("reply_markup", replyMarkup.serializeJSON().toString());
+        return RequestHelper.get(token, BotMethod.EDITMESSAGECAPTION, parameters, timeout)
                 .map(object -> MessageDecoder.decode(ResponseDecoder.decode(object)));
     }
 }

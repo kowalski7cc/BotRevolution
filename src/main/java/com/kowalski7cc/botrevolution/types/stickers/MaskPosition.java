@@ -1,13 +1,24 @@
 package com.kowalski7cc.botrevolution.types.stickers;
 
+import com.kowalski7cc.botrevolution.types.JSONSerializable;
+import org.json.JSONObject;
+
 import java.util.Objects;
 
-public class MaskPosition {
+public class MaskPosition implements JSONSerializable {
 
     private MaskPositionPoint point;
     private Float xShift;
     private Float yShift;
     private Float scale;
+
+    @Override
+    public JSONObject serializeJSON() {
+        return new JSONObject().put("point", point.toString())
+                .put("x_shift", xShift)
+                .put("y_shift", yShift)
+                .put("scale", scale);
+    }
 
     public enum MaskPositionPoint {
         FOREHEAD,
