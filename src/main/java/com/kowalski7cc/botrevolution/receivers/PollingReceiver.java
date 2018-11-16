@@ -88,6 +88,11 @@ public class PollingReceiver extends Receiver {
         }
     }
 
+    public void setSuppressExceptions(boolean suppressExceptions) {
+        if (receiverWorker!=null)
+            receiverWorker.setSuppressExceptions(suppressExceptions);
+    }
+
     public Integer getLastOffset() {
         return lastOffset;
     }
