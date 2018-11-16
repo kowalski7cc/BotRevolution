@@ -4,6 +4,8 @@ import org.json.JSONObject;
 
 public class TelegramException extends RuntimeException {
 
+    private static final long serialVersionUID = -6776107372075768303L;
+
     public TelegramException() {
     }
 

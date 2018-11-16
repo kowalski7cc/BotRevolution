@@ -99,7 +99,6 @@ public class RequestHelper {
         return getResponse(httpRequest, client);
     }
 
-    @SuppressWarnings("ConstantConditions")
     private static String getResponse(Request httpRequest, OkHttpClient client) throws IOException {
         Response response = client.newCall(httpRequest).execute();
         if (response.isSuccessful()) {

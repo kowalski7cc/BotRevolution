@@ -124,7 +124,6 @@ public class PollingReceiver extends Receiver {
             return this;
         }
 
-        @SuppressWarnings("ConstantConditions")
         @Override
         public void run() {
             while (!isInterrupted()) {
