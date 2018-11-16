@@ -2,14 +2,14 @@ package com.kowalski7cc.botrevolution.utils.decoder;
 
 import com.kowalski7cc.botrevolution.types.User;
 import org.json.JSONObject;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-class UserDecoderTest {
+public class UserDecoderTest {
 
     @Test
-    void decode() {
+    public void decode() {
         var json = "{\"id\":1234,\"is_bot\":false,\"first_name\":\"Name\"" +
                 ",\"last_name\":\"Surname\",\"username\":\"username\",\"language_code\":\"en-US\"}";
         var object = new JSONObject(json);

@@ -5,14 +5,14 @@ import com.kowalski7cc.botrevolution.types.chat.GroupChat;
 import com.kowalski7cc.botrevolution.types.chat.PrivateChat;
 import com.kowalski7cc.botrevolution.types.chat.SupergroupChat;
 import org.json.JSONObject;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-class ChatDecoderTest {
+public class ChatDecoderTest {
 
     @Test
-    void decodePrivateChat() {
+    public void decodePrivateChat() {
         var json = "{\"id\":1234,\"first_name\":\"Name\",\"last_name\":\"Surname\",\"username\"" +
                 ":\"username\",\"type\":\"private\"}";
         var object = new JSONObject(json);
@@ -27,7 +27,7 @@ class ChatDecoderTest {
     }
 
     @Test
-    void decodeGroupChat() {
+    public void decodeGroupChat() {
         var json = "{\"id\":1234,\"title\":\"Group\",\"type\":\"group\",\"all_members_are_administrators\":false}";
         var object = new JSONObject(json);
         var decoded = ChatDecoder.decodeGroupChat(object);
@@ -38,7 +38,7 @@ class ChatDecoderTest {
     }
 
     @Test
-    void decodeSupergroupChat() {
+    public void decodeSupergroupChat() {
         var json = "{\"id\":1234,\"title\":\"Supergroup\",\"type\":\"supergroup\",\"description\":\"test\"" +
                 ",\"invite_link\":\"test\",\"username\":\"username\"}";
         var object = new JSONObject(json);
@@ -55,7 +55,7 @@ class ChatDecoderTest {
     }
 
     @Test
-    void decodeChannelChat() {
+    public void decodeChannelChat() {
         var json = "{\"id\":1234,\"title\":\"channel\",\"username\":\"mychannel\",\"type\":" +
                 "\"channel\",\"description\":\"hello\",\"invite_link\":\"test\"}";
         var object = new JSONObject(json);
