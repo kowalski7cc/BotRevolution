@@ -4,9 +4,11 @@ import com.kowalski7cc.botrevolution.types.repymarkups.ReplyMarkup;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class ReplyKeyboardMarkup implements ReplyMarkup {
 
@@ -81,9 +83,11 @@ public class ReplyKeyboardMarkup implements ReplyMarkup {
     public JSONObject serializeJSON() {
         return new JSONObject().put("keyboard", new JSONArray(keyboard.stream()
                 .map(keyboardButtons -> new JSONArray(keyboardButtons.stream()
-                        .map(keyboardButton -> keyboardButton.serializeJSON())))))
-                .put("resize_keyboard", resizeKeyboard.toString())
-                .put("one_time_keyboard", oneTimeKeyboard.toString())
+                        .map(keyboardButton -> keyboardButton.serializeJSON())
+                        .toArray()))
+                .toArray()))
+                .put("resize_keyboard", resizeKeyboard)
+                .put("one_time_keyboard", oneTimeKeyboard)
                 .put("selective", selective);
     }
 }

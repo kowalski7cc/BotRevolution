@@ -49,6 +49,7 @@ public class ReplyKeyboardBuilder implements Builder<ReplyKeyboardMarkup> {
 
         public ReplyKeyboardRowBuilder(ReplyKeyboardBuilder parent) {
             this.parent = parent;
+            row = new LinkedList<>();
         }
 
         public ReplyKeyboardRowBuilder addButton(KeyboardButton keyboardButton) {
