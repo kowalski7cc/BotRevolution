@@ -72,6 +72,6 @@ public class ShippingOption implements JSONSerializable {
     public JSONObject serializeJSON() {
         return new JSONObject().put("id", id)
                 .put("title", title)
-                .put("prices", new JSONArray(prices.stream().map(labeledPrice -> labeledPrice.serializeJSON())));
+                .put("prices", new JSONArray(prices.stream().map(LabeledPrice::serializeJSON)));
     }
 }

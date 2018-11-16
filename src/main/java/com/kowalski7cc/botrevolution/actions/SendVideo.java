@@ -91,7 +91,7 @@ public class SendVideo extends SendMedia {
 
     @Override
     public Optional<Message> send() {
-        Map<String, String> parameters = new HashMap<String, String>();
+        Map<String, String> parameters = new HashMap<>();
         parameters.put("chat_id", Objects.requireNonNull(chatID));
         if (supportsStreaming != null) {
             parameters.put("supports_streaming", supportsStreaming.toString());

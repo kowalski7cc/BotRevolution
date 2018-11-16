@@ -60,6 +60,6 @@ public class KickChatMember extends MethodBuilder<Boolean> {
             parameters.put("until_date", untilDate.toString());
         }
         return RequestHelper.get(token, BotMethod.KICKCHATMEMBER, parameters, timeout)
-                .map(object -> ResponseDecoder.decodeBoolean(object));
+                .map(ResponseDecoder::decodeBoolean);
     }
 }

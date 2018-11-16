@@ -38,6 +38,6 @@ public class GetChatMembersCount extends MethodBuilder<Integer> {
         Map<String, String> parameters = new HashMap<>();
         parameters.put("chat_id", Objects.requireNonNull(chatID));
         return RequestHelper.get(token, BotMethod.GETCHATMEMBERSCOUNT, parameters, timeout)
-                .map(object -> ResponseDecoder.decodeInteger(object));
+                .map(ResponseDecoder::decodeInteger);
     }
 }

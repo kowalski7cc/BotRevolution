@@ -46,12 +46,12 @@ public class AnswerShippingQuery extends MethodBuilder<Boolean> {
         parameters.put("ok", Objects.requireNonNull(ok.toString()));
         if(ok) {
             parameters.put("shipping_options", new JSONArray(shippingOptions.stream()
-                    .map(shippingOption -> shippingOption.serializeJSON()))
+                    .map(ShippingOption::serializeJSON))
                     .toString());
         } else {
             parameters.put("error_message", Objects.requireNonNull(errorMessage));
         }
         return RequestHelper.get(token, BotMethod.SENDMESSAGE, parameters, timeout)
-                .map(object -> ResponseDecoder.decodeBoolean(object));
+                .map(ResponseDecoder::decodeBoolean);
     }
 }

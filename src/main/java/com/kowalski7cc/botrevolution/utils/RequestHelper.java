@@ -27,7 +27,7 @@ public class RequestHelper {
         try {
             return Optional.of(new JSONObject(makeRequest(buildUrl(token, method, parameters), timeout)));
         } catch (IOException e) {
-            return null;
+            return Optional.empty();
         }
     }
 
@@ -110,7 +110,7 @@ public class RequestHelper {
     }
 
     public static void downloadFile(FileAttachment origin, File destination, String token, int timeout) throws IOException {
-        if (origin.getFilePath() == null) {
+        if (!origin.getFilePath().isPresent()) {
             origin = getFile(origin.getFileID(), token, timeout);
         }
         StringBuilder stringBuilder = new StringBuilder(FILE_DOWNLOAD_PATH);
@@ -126,7 +126,7 @@ public class RequestHelper {
 
     public static FileAttachment getFile(String fileID, String token, int timeout) throws IOException {
         Objects.requireNonNull(fileID);
-        Map<String, String> parameters = new HashMap<String, String>();
+        Map<String, String> parameters = new HashMap<>();
         parameters.put("file_id", fileID);
         String request = buildUrl(token, BotMethod.GETFILE, parameters);
         String response = makeRequest(request, timeout);

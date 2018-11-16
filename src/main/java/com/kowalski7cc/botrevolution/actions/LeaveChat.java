@@ -42,6 +42,6 @@ public class LeaveChat extends MethodBuilder<Boolean> {
         Map<String, String> parameters = new HashMap<>();
         parameters.put("chat_id", Objects.requireNonNull(chatID));
         return RequestHelper.get(token, BotMethod.LEAVECHAT, parameters, timeout)
-                .map(object -> ResponseDecoder.decodeBoolean(object));
+                .map(ResponseDecoder::decodeBoolean);
     }
 }

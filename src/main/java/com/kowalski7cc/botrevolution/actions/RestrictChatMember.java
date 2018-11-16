@@ -96,6 +96,6 @@ public class RestrictChatMember extends MethodBuilder<Boolean> {
             parameters.put("can_add_web_page_previews", canAddWebPagePreviews.toString());
         }
         return RequestHelper.get(token, BotMethod.RESTRICTCHATMEMBER, parameters, timeout)
-                .map(object -> ResponseDecoder.decodeBoolean(object));
+                .map(ResponseDecoder::decodeBoolean);
     }
 }

@@ -57,7 +57,7 @@ public class TelegramBot {
 
     public Optional<Boolean> deleteWebhook() {
         return RequestHelper.get(token, BotMethod.DELETEWEBHOOK, null, getProgrammedTimeout())
-                .map(object -> ResponseDecoder.decodeBoolean(object));
+                .map(ResponseDecoder::decodeBoolean);
     }
 
     public Optional<WebhookInfo> getWebhookInfo() {
@@ -198,7 +198,7 @@ public class TelegramBot {
 
     public DeleteChatStickerSet deleteChatStickerSet() {return new DeleteChatStickerSet(token, getProgrammedTimeout());}
 
-    // TODO Add here answerCallbackQuery()
+    public AnswerCallbackQuery answerCallbackQuery() {return new AnswerCallbackQuery(token, getProgrammedTimeout());}
 
     // UPDATING MESSAGES
 

@@ -33,7 +33,8 @@ public class SetChatTitle extends MethodBuilder<Boolean> {
     public Optional<Boolean> send() {
         Map<String, String> parameters = new HashMap<>();
         parameters.put("chat_id", Objects.requireNonNull(chatID));
+        parameters.put("title", Objects.requireNonNull(title));
         return RequestHelper.get(token, BotMethod.SETCHATTITLE, parameters, timeout)
-                .map(object -> ResponseDecoder.decodeBoolean(object));
+                .map(ResponseDecoder::decodeBoolean);
     }
 }

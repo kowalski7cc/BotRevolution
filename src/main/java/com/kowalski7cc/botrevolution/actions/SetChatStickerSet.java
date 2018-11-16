@@ -45,6 +45,6 @@ public class SetChatStickerSet extends MethodBuilder<Boolean> {
         parameters.put("chat_id", Objects.requireNonNull(chatID));
         parameters.put("sticker_set_name", Objects.requireNonNull(stickerSetName));
         return RequestHelper.get(token, BotMethod.SETCHATSTICKERSET, parameters, timeout)
-                .map(object -> ResponseDecoder.decodeBoolean(object));
+                .map(ResponseDecoder::decodeBoolean);
     }
 }

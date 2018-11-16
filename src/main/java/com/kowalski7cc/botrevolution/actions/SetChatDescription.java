@@ -50,6 +50,6 @@ public class SetChatDescription extends MethodBuilder<Boolean> {
         if (description != null)
         parameters.put("description", description);
         return RequestHelper.get(token, BotMethod.SETCHATDESCRIPTION, parameters, timeout)
-                .map(object -> ResponseDecoder.decodeBoolean(object));
+                .map(ResponseDecoder::decodeBoolean);
     }
 }

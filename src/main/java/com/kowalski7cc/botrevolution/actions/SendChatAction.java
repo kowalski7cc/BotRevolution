@@ -46,6 +46,6 @@ public class SendChatAction extends MethodBuilder<Boolean> {
         parameters.put("chat_id", Objects.requireNonNull(chatID));
         parameters.put("action", Objects.requireNonNull(action.toString().toLowerCase()));
         return RequestHelper.get(token, BotMethod.SENDCHATACTION, parameters, timeout)
-                .map(object -> ResponseDecoder.decodeBoolean(object));
+                .map(ResponseDecoder::decodeBoolean);
     }
 }

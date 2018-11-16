@@ -45,6 +45,6 @@ public class UnbanChatMember extends MethodBuilder<Boolean> {
         parameters.put("chat_id", Objects.requireNonNull(chatID));
         parameters.put("user_id", Objects.requireNonNull(userID.toString()));
         return RequestHelper.get(token, BotMethod.UNBANCHATMEMBER, parameters, timeout)
-                .map(object -> ResponseDecoder.decodeBoolean(object));
+                .map(ResponseDecoder::decodeBoolean);
     }
 }

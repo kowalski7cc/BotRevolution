@@ -57,6 +57,6 @@ public class PinChatMessage extends MethodBuilder<Boolean> {
         if (disableNotification != null)
             parameters.put("disable_notification", disableNotification.toString());
         return RequestHelper.get(token, BotMethod.PINCHATMESSAGE, parameters, timeout)
-                .map(object -> ResponseDecoder.decodeBoolean(object));
+                .map(ResponseDecoder::decodeBoolean);
     }
 }

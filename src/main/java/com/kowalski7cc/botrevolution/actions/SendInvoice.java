@@ -167,7 +167,7 @@ public class SendInvoice extends MethodBuilder<Message> {
         parameters.put("start_parameter", startParameter);
         parameters.put("currency", currency);
         parameters.put("prices", new JSONArray(prices.stream()
-                .map(labeledPrice -> labeledPrice.serializeJSON()))
+                .map(LabeledPrice::serializeJSON))
                 .toString());
         if (providerData != null) {
             parameters.put("provider_data", providerData);

@@ -34,7 +34,7 @@ public class PromoteChatMember extends MethodBuilder<Boolean> {
     }
 
     public PromoteChatMember setChatID(Chat chat) {
-        this.chatID = chatID;
+        this.chatID = chat.getId().toString();
         return this;
     }
 
@@ -123,6 +123,6 @@ public class PromoteChatMember extends MethodBuilder<Boolean> {
             parameters.put("can_promote_members", canPromoteMembers.toString());
         }
         return RequestHelper.get(token, BotMethod.PROMOTECHATMEMBER, parameters, timeout)
-                .map(object -> ResponseDecoder.decodeBoolean(object));
+                .map(ResponseDecoder::decodeBoolean);
     }
 }

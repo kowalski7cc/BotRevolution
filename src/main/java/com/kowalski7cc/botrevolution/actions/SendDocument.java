@@ -83,7 +83,7 @@ public class SendDocument extends SendMedia {
 
     @Override
     public Optional<Message> send() {
-        Map<String, String> parameters = new HashMap<String, String>();
+        Map<String, String> parameters = new HashMap<>();
         parameters.put("chat_id", Objects.requireNonNull(chatID));
         if (caption != null ) {
             parameters.put("caption", caption);

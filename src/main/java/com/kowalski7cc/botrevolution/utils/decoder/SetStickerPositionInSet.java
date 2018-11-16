@@ -41,6 +41,6 @@ public class SetStickerPositionInSet extends MethodBuilder<Boolean> {
         parameters.put("sticker", Objects.requireNonNull(sticker));
         parameters.put("position", Objects.requireNonNull(position.toString()));
         return RequestHelper.get(token, BotMethod.SETSTICKERPOSITIONINSET, parameters, timeout)
-                .map(object -> ResponseDecoder.decodeBoolean(object));
+                .map(ResponseDecoder::decodeBoolean);
     }
 }

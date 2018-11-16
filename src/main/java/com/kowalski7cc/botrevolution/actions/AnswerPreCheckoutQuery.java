@@ -39,9 +39,9 @@ public class AnswerPreCheckoutQuery extends MethodBuilder<Boolean> {
         Map<String, String> parameters = new HashMap<>();
         parameters.put("pre_checkout_query_id", Objects.requireNonNull(preCheckoutQueryId));
         parameters.put("ok", Objects.requireNonNull(ok.toString()));
-        if (ok != true)
+        if (!ok)
             parameters.put("error_message", Objects.requireNonNull(errorMessage));
         return RequestHelper.get(token, BotMethod.SENDMESSAGE, parameters, timeout)
-                .map(object -> ResponseDecoder.decodeBoolean(object));
+                .map(ResponseDecoder::decodeBoolean);
     }
 }

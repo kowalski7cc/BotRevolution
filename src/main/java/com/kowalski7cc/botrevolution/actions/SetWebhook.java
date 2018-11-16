@@ -3,7 +3,6 @@ package com.kowalski7cc.botrevolution.actions;
 import com.kowalski7cc.botrevolution.types.UpdateType;
 import com.kowalski7cc.botrevolution.utils.BotMethod;
 import com.kowalski7cc.botrevolution.utils.RequestHelper;
-import com.kowalski7cc.botrevolution.utils.decoder.MessageDecoder;
 import com.kowalski7cc.botrevolution.utils.decoder.ResponseDecoder;
 import org.json.JSONArray;
 
@@ -54,7 +53,7 @@ public class SetWebhook extends MethodBuilder<Boolean> {
         }
         if (certificate == null) {
             return RequestHelper.get(token, BotMethod.SETWEBHOOK, parameters, timeout)
-                    .map(object -> ResponseDecoder.decodeBoolean(object));
+                    .map(ResponseDecoder::decodeBoolean);
         } else {
             String url = RequestHelper.buildUrl(token, BotMethod.SETWEBHOOK, parameters);
             Map<String, Object> payload = new HashMap<>();

@@ -16,7 +16,7 @@ public class WebhookInfoDecoder {
                 .setAllowedUpdates(object.getJSONArray("allowed_updates")
                         .toList()
                         .stream()
-                        .map(o -> o.toString())
+                        .map(Object::toString)
                         .collect(Collectors.toList()));
     }
 

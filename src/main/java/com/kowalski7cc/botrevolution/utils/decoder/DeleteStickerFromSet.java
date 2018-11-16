@@ -33,6 +33,6 @@ public class DeleteStickerFromSet extends MethodBuilder<Boolean> {
         Map<String, String> parameters = new HashMap<>();
         parameters.put("sticker", Objects.requireNonNull(sticker));
         return RequestHelper.get(token, BotMethod.DELETESTICKERFROMSET, parameters, timeout)
-                .map(object -> ResponseDecoder.decodeBoolean(object));
+                .map(ResponseDecoder::decodeBoolean);
     }
 }
