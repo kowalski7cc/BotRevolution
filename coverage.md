@@ -24,8 +24,8 @@
   - ✅ Venue
   - ✅ UserProfilePhotos
   - ✅ File
-  - 🔜 ReplyKeyboardMarkup
-  - 🔜 KeyboardButton
+  - ✅ ReplyKeyboardMarkup
+  - ✅ KeyboardButton
   - ✅ ReplyKeyboardRemove
   - ✅ InlineKeyboardMarkup
   - ✅ InlineKeyboardButton

@@ -17,17 +17,17 @@ public class InlineKeyboardBuilder implements Builder<InlineKeyboardMarkup> {
         return new InlineKeyboardMarkup(inlineKeyboard);
     }
 
-    public class InlineColumnBuilder implements Builder<InlineKeyboardBuilder> {
+    public class InlineRowBuilder implements Builder<InlineKeyboardBuilder> {
 
-        private List<InlineKeyboardButton> column;
+        private List<InlineKeyboardButton> row;
         private InlineKeyboardBuilder parent;
 
-        public class InlineButtonBuilder implements Builder<InlineColumnBuilder> {
+        public class InlineButtonBuilder implements Builder<InlineRowBuilder> {
 
             private InlineKeyboardButton inlineKeyboardButton;
-            private InlineColumnBuilder parent;
+            private InlineRowBuilder parent;
 
-            public InlineButtonBuilder(String text, InlineColumnBuilder parent) {
+            public InlineButtonBuilder(String text, InlineRowBuilder parent) {
                 this.inlineKeyboardButton = new InlineKeyboardButton(text);
                 this.parent = parent;
             }
@@ -48,7 +48,7 @@ public class InlineKeyboardBuilder implements Builder<InlineKeyboardMarkup> {
             }
 
             public InlineButtonBuilder setCallbackData(String callbackData) {
-                inlineKeyboardButton.setUrl(callbackData);
+                inlineKeyboardButton.setCallbackData(callbackData);
                 return this;
             }
 
@@ -88,28 +88,28 @@ public class InlineKeyboardBuilder implements Builder<InlineKeyboardMarkup> {
             }
 
             @Override
-            public InlineColumnBuilder build() {
+            public InlineRowBuilder build() {
                 addButton(inlineKeyboardButton);
                 return parent;
             }
         }
 
-        public InlineColumnBuilder(InlineKeyboardBuilder parent) {
+        public InlineRowBuilder(InlineKeyboardBuilder parent) {
             this.parent = parent;
-            column = new LinkedList<>();
+            row = new LinkedList<>();
         }
 
-        public InlineColumnBuilder addButton(InlineKeyboardButton button) {
+        public InlineRowBuilder addButton(InlineKeyboardButton button) {
             if (buttons>0) {
                 if (button.hasGame() || button.hasPay())
                     throw new UnsupportedOperationException("This type of button must always be the first button in the first row.");
             }
             if (buttons >= 100)
                 throw new UnsupportedOperationException("You have reached limit of 100 buttons");
-            if (column.size() >= 8)
+            if (row.size() >= 8)
                 throw new UnsupportedOperationException("You have reached limit of 8 buttons per row");
             buttons++;
-            column.add(button);
+            row.add(button);
             return this;
         }
 
@@ -119,7 +119,7 @@ public class InlineKeyboardBuilder implements Builder<InlineKeyboardMarkup> {
 
         @Override
         public InlineKeyboardBuilder build() {
-            inlineKeyboard.add(column);
+            inlineKeyboard.add(row);
             return parent;
         }
     }
@@ -129,8 +129,8 @@ public class InlineKeyboardBuilder implements Builder<InlineKeyboardMarkup> {
         inlineKeyboard = new LinkedList<>();
     }
 
-    public InlineColumnBuilder addColumn() {
-        return new InlineColumnBuilder(this);
+    public InlineRowBuilder addRow() {
+        return new InlineRowBuilder(this);
     }
 
 }
