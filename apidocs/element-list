@@ -1,0 +1,15 @@
+com.kowalski7cc.botrevolution
+com.kowalski7cc.botrevolution.actions
+com.kowalski7cc.botrevolution.receivers
+com.kowalski7cc.botrevolution.types
+com.kowalski7cc.botrevolution.types.chat
+com.kowalski7cc.botrevolution.types.games
+com.kowalski7cc.botrevolution.types.inlinemode
+com.kowalski7cc.botrevolution.types.media
+com.kowalski7cc.botrevolution.types.payments
+com.kowalski7cc.botrevolution.types.repymarkups
+com.kowalski7cc.botrevolution.types.repymarkups.inlinekeyboard
+com.kowalski7cc.botrevolution.types.repymarkups.replykeyboards
+com.kowalski7cc.botrevolution.types.stickers
+com.kowalski7cc.botrevolution.utils
+com.kowalski7cc.botrevolution.utils.decoder
