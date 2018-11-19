@@ -2,10 +2,7 @@ package com.kowalski7cc.botrevolution.types.repymarkups.replykeyboards;
 
 import org.junit.Test;
 
-import java.lang.reflect.Array;
 import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
 
 import static org.junit.Assert.*;
 
