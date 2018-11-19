@@ -19,6 +19,16 @@ public class PrivateChat extends Chat {
         return ChatType.PRIVATE;
     }
 
+    @Override
+    public ChatType getChatType() {
+        return ChatType.PRIVATE;
+    }
+
+    @Override
+    public Optional<PrivateChat> getPrivateChat() {
+        return Optional.of(this);
+    }
+
     public String getFirstName() {
         return firstName;
     }

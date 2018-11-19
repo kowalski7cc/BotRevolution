@@ -40,6 +40,24 @@ public abstract class Chat {
         return Objects.equals(id, chat.id);
     }
 
+    public Optional<PrivateChat> getPrivateChat() {
+        return Optional.empty();
+    }
+
+    public Optional<GroupChat> getGroupChat() {
+        return Optional.empty();
+    }
+
+    public Optional<SupergroupChat> getSupergroupChat() {
+        return Optional.empty();
+    }
+
+    public Optional<ChannelChat> getChannelChat() {
+        return Optional.empty();
+    }
+
+    public abstract ChatType getChatType();
+
     @Override
     public int hashCode() {
         return Objects.hash(id);

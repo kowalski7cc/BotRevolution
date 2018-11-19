@@ -1,6 +1,7 @@
 package com.kowalski7cc.botrevolution.types.chat;
 
 import java.util.Objects;
+import java.util.Optional;
 
 public class GroupChat extends Chat {
 
@@ -16,6 +17,16 @@ public class GroupChat extends Chat {
     @Override
     public ChatType getType() {
         return ChatType.GROUP;
+    }
+
+    @Override
+    public ChatType getChatType() {
+        return ChatType.GROUP;
+    }
+
+    @Override
+    public Optional<GroupChat> getGroupChat() {
+        return Optional.of(this);
     }
 
     public String getTitle() {

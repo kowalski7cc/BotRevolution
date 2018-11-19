@@ -25,6 +25,16 @@ public class SupergroupChat extends Chat {
         return ChatType.SUPERGROUP;
     }
 
+    @Override
+    public ChatType getChatType() {
+        return ChatType.SUPERGROUP;
+    }
+
+    @Override
+    public Optional<SupergroupChat> getSupergroupChat() {
+        return Optional.of(this);
+    }
+
     public String getTitle() {
         return title;
     }

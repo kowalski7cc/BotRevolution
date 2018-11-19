@@ -23,6 +23,16 @@ public class ChannelChat extends Chat {
         return ChatType.CHANNEL;
     }
 
+    @Override
+    public ChatType getChatType() {
+        return ChatType.CHANNEL;
+    }
+
+    @Override
+    public Optional<ChannelChat> getChannelChat() {
+        return Optional.of(this);
+    }
+
     public String getTitle() {
         return title;
     }
