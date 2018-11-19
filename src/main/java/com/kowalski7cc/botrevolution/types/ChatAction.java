@@ -1,7 +1,7 @@
 package com.kowalski7cc.botrevolution.types;
 
 public enum ChatAction {
-    TYPYNG,
+    TYPING,
     UPLOAD_PHOTO,
     RECORD_VIDEO,
     UPLOAD_VIDEO,
