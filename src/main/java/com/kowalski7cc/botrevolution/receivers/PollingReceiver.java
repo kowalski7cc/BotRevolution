@@ -112,7 +112,7 @@ public class PollingReceiver extends Receiver {
         private boolean suppressExceptions;
 
         public ReceiverWorker(PollingReceiver receiver, Integer timeout) {
-            setName("Telegram Bot Polling");
+            setName("Telegram Bot Poller");
             this.receiver = receiver;
             this.timeout = timeout;
             setDaemon(true);
