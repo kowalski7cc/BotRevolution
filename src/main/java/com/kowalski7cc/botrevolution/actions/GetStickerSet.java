@@ -26,7 +26,7 @@ public class GetStickerSet extends MethodBuilder<StickerSet> {
     }
 
     public GetStickerSet setName(Sticker sticker) {
-        this.name = sticker.getSetName().get();
+        this.name = sticker.getSetName().orElseThrow();
         return this;
     }
 

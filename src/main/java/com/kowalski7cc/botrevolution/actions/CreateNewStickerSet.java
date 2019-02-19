@@ -65,12 +65,9 @@ public class CreateNewStickerSet extends SendMedia {
         parameters.put("user_id", Objects.requireNonNull(userID.toString()));
         parameters.put("name", Objects.requireNonNull(name));
         parameters.put("title", Objects.requireNonNull(title));
-        if (containsMasks != null ) {
-            parameters.put("contains_masks", containsMasks.toString());
-        }
-        if (maskPosition != null ) {
-            parameters.put("mask_position", maskPosition.serializeJSON().toString());
-        }
+        Optional.ofNullable(containsMasks).ifPresent(aBoolean -> parameters.put("contains_masks", aBoolean.toString()));
+        Optional.ofNullable(maskPosition).ifPresent(maskPosition1 -> parameters.put("mask_position", maskPosition1.serializeJSON()
+                .toString()));
         return sendMedia(pngSticker, parameters, BotMethod.CREATENEWSTICKERSET, "png_sticker");
     }
 }

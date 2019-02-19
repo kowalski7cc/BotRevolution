@@ -41,7 +41,7 @@ public class AddStickerToSet extends SendMedia {
     }
 
     public AddStickerToSet setName(Sticker sticker) {
-        this.name = Objects.requireNonNull(sticker.getSetName().get());
+        this.name = sticker.getSetName().orElseThrow();
         return this;
     }
 

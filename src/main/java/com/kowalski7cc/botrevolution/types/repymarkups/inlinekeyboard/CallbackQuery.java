@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public class CallbackQuery {
 
-    private Integer id;
+    private String id;
     private User from;
     private Message message;
     private String inlineMessageID;
@@ -16,17 +16,17 @@ public class CallbackQuery {
     private String data;
     private String gameShortName;
 
-    public CallbackQuery(Integer id, User from, String chatInstance) {
+    public CallbackQuery(String id, User from, String chatInstance) {
         this.id = id;
         this.from = from;
         this.chatInstance = chatInstance;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public CallbackQuery setId(Integer id) {
+    public CallbackQuery setId(String id) {
         this.id = Objects.requireNonNull(id);
         return this;
     }

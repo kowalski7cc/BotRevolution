@@ -1,9 +1,11 @@
 package com.kowalski7cc.botrevolution.actions;
 
+import com.kowalski7cc.botrevolution.types.repymarkups.inlinekeyboard.CallbackQuery;
 import com.kowalski7cc.botrevolution.utils.BotMethod;
 import com.kowalski7cc.botrevolution.utils.RequestHelper;
 import com.kowalski7cc.botrevolution.utils.decoder.ResponseDecoder;
 
+import javax.swing.text.html.Option;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -23,6 +25,11 @@ public class AnswerCallbackQuery extends MethodBuilder<Boolean> {
 
     public AnswerCallbackQuery setCallbackQueryID(String callbackQueryID) {
         this.callbackQueryID = Objects.requireNonNull(callbackQueryID);
+        return this;
+    }
+
+    public AnswerCallbackQuery setCallbackQueryID(CallbackQuery callbackQuery) {
+        this.callbackQueryID = Objects.requireNonNull(callbackQuery.getId());
         return this;
     }
 
@@ -50,19 +57,11 @@ public class AnswerCallbackQuery extends MethodBuilder<Boolean> {
     public Optional<Boolean> send() {
         Map<String, String> parameters = new HashMap<>();
         parameters.put("callback_query_id", Objects.requireNonNull(callbackQueryID));
-        if (text != null) {
-            parameters.put("text", text);
-        }
-        if (showAlert != null) {
-            parameters.put("show_alert", showAlert.toString());
-        }
-        if (url != null) {
-            parameters.put("url", url);
-        }
-        if (cacheTime != null) {
-            parameters.put("cache_time", cacheTime.toString());
-        }
-        return RequestHelper.get(token, BotMethod.SENDMESSAGE, parameters, timeout)
+        Optional.ofNullable(text).ifPresent(s -> parameters.put("text", text));
+        Optional.ofNullable(showAlert).ifPresent(aBoolean -> parameters.put("show_alert",showAlert.toString()));
+        Optional.ofNullable(url).ifPresent(s -> parameters.put("url", s));
+        Optional.ofNullable(cacheTime).ifPresent(integer -> parameters.put("cache_time", integer.toString()));
+        return RequestHelper.get(token, BotMethod.ANSWERCALLBACKQUERY, parameters, timeout)
                 .map(ResponseDecoder::decodeBoolean);
     }
 }

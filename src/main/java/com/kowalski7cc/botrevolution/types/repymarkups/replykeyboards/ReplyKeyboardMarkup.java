@@ -81,7 +81,7 @@ public class ReplyKeyboardMarkup implements ReplyMarkup {
     public JSONObject serializeJSON() {
         return new JSONObject().put("keyboard", new JSONArray(keyboard.stream()
                 .map(keyboardButtons -> new JSONArray(keyboardButtons.stream()
-                        .map(keyboardButton -> keyboardButton.serializeJSON())
+                        .map(KeyboardButton::serializeJSON)
                         .toArray()))
                 .toArray()))
                 .put("resize_keyboard", resizeKeyboard)

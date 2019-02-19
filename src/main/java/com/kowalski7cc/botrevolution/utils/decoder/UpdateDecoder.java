@@ -6,6 +6,7 @@ import org.json.JSONObject;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 public class UpdateDecoder {
 
@@ -17,14 +18,29 @@ public class UpdateDecoder {
 
     public static Update decode(JSONObject object) {
         return new Update(object.getInt("update_id"))
-                .setMessage(object.has("message")?MessageDecoder.decode(object.getJSONObject("message")):null)
-                .setEditedMessage(object.has("edited_message")?MessageDecoder.decode(object.getJSONObject("edited_message")):null)
-                .setChannelPost(object.has("channel_post")?MessageDecoder.decode(object.getJSONObject("channel_post")):null)
-                .setEditedChannelPost(object.has("edited_channel_post")?MessageDecoder.decode(object.getJSONObject("edited_channel_post")):null)
-                .setInlineQuery(null)
+                .setMessage(Optional.ofNullable(object.optJSONObject("message"))
+                        .map(MessageDecoder::decode)
+                        .orElse(null))
+                .setEditedMessage(Optional.ofNullable(object.optJSONObject("edited_message"))
+                        .map(MessageDecoder::decode)
+                        .orElse(null))
+                .setChannelPost(Optional.ofNullable(object.optJSONObject("channel_post"))
+                        .map(MessageDecoder::decode)
+                        .orElse(null))
+                .setEditedChannelPost(Optional.ofNullable(object.optJSONObject("edited_channel_post"))
+                        .map(MessageDecoder::decode)
+                        .orElse(null))
+                .setInlineQuery(Optional.ofNullable(object.optJSONObject("inline_query"))
+                        .map(InlineQueryDecoder::decode)
+                        .orElse(null))
+                .setCallbackQuery(Optional.ofNullable(object.optJSONObject("callback_query"))
+                        .map(CallbackQueryDecoder::decode)
+                        .orElse(null))
+                // TODO setChosenInlineResult
                 .setChosenInlineResult(null)
-                .setCallbackQuery(null)
+                // TODO setShippingQuery
                 .setShippingQuery(null)
+                // TODO setPreCheckoutQuery
                 .setPreCheckoutQuery(null);
     }
 }
