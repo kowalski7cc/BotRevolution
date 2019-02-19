@@ -50,7 +50,7 @@ public class DeleteMessage extends MethodBuilder<Boolean>  {
         Map<String, String> parameters = new HashMap<>();
         parameters.put("chat_id", Objects.requireNonNull(chatID));
         parameters.put("message_id", Objects.requireNonNull(messageID.toString()));
-        return RequestHelper.get(token, BotMethod.EDITMESSAGEREPLYMARKUP, parameters, timeout)
+        return RequestHelper.get(token, BotMethod.DELETEMESSAGE, parameters, timeout)
                 .map(ResponseDecoder::decodeBoolean);
     }
 }

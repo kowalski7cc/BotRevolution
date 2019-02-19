@@ -3,11 +3,20 @@ package com.kowalski7cc.botrevolution.utils.decoder;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.Objects;
+
 public class ResponseDecoder {
 
     public static String decodeString(JSONObject object) {
         if(object.getBoolean("ok")) {
             return object.getString("result");
+        }
+        throw new TelegramException(object);
+    }
+
+    public static Object decodeObject(JSONObject object) {
+        if(object.getBoolean("ok")) {
+            return object.get("result");
         }
         throw new TelegramException(object);
     }
