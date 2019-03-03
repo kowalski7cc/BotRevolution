@@ -45,6 +45,12 @@ public class DeleteMessage extends MethodBuilder<Boolean>  {
         return this;
     }
 
+    public DeleteMessage setMessage(Message message) {
+        this.messageID = Objects.requireNonNull(message.getMessageID());
+        this.chatID = Objects.requireNonNull(message.getChat().getId().toString());
+        return this;
+    }
+
     @Override
     public Optional<Boolean> send() {
         Map<String, String> parameters = new HashMap<>();

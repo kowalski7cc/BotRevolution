@@ -5,7 +5,7 @@
 
     <groupId>com.xspacesoft.kowalski7cc</groupId>
     <artifactId>BotRevolution</artifactId>
-    <version>5.0a-Snapshot</version>
+    <version>5.0b-Snapshot</version>
     <packaging>jar</packaging>
 
     <name>BotRevolution</name>

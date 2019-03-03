@@ -1,5 +1,7 @@
 package com.kowalski7cc.botrevolution.types.chat;
 
+import com.kowalski7cc.botrevolution.types.User;
+
 import java.util.Objects;
 import java.util.Optional;
 
@@ -45,6 +47,12 @@ public class PrivateChat extends Chat {
     public PrivateChat setUsername(String username) {
         this.username = username;
         return this;
+    }
+
+    public User toUser() {
+        return new User(id.intValue(), false, firstName)
+                .setLastName(lastName)
+                .setUsername(username);
     }
 
     public Optional<String> getLastName() {

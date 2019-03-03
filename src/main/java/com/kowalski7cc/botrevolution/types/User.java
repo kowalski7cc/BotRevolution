@@ -1,5 +1,7 @@
 package com.kowalski7cc.botrevolution.types;
 
+import com.kowalski7cc.botrevolution.types.chat.PrivateChat;
+
 import java.util.Objects;
 import java.util.Optional;
 
@@ -11,7 +13,6 @@ public class User {
     private String lastName;
     private String username;
     private String languageCode;
-
 
     public User(Integer id, Boolean isBot, String firstName) {
         Objects.requireNonNull(id);
@@ -82,6 +83,12 @@ public class User {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return Objects.equals(id, user.id);
+    }
+
+    public PrivateChat toChat() {
+        return new PrivateChat(id.longValue(), firstName)
+                .setLastName(lastName)
+                .setUsername(username);
     }
 
     @Override
