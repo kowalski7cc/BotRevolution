@@ -5,7 +5,6 @@ import com.kowalski7cc.botrevolution.utils.BotMethod;
 import com.kowalski7cc.botrevolution.utils.RequestHelper;
 import com.kowalski7cc.botrevolution.utils.decoder.ResponseDecoder;
 
-import javax.swing.text.html.Option;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -58,7 +57,7 @@ public class AnswerCallbackQuery extends MethodBuilder<Boolean> {
         Map<String, String> parameters = new HashMap<>();
         parameters.put("callback_query_id", Objects.requireNonNull(callbackQueryID));
         Optional.ofNullable(text).ifPresent(s -> parameters.put("text", text));
-        Optional.ofNullable(showAlert).ifPresent(aBoolean -> parameters.put("show_alert",showAlert.toString()));
+        Optional.ofNullable(showAlert).ifPresent(aBoolean -> parameters.put("show_alert", showAlert.toString()));
         Optional.ofNullable(url).ifPresent(s -> parameters.put("url", s));
         Optional.ofNullable(cacheTime).ifPresent(integer -> parameters.put("cache_time", integer.toString()));
         return RequestHelper.get(token, BotMethod.ANSWERCALLBACKQUERY, parameters, timeout)
