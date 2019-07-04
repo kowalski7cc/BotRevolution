@@ -1,5 +1,7 @@
 # Coverage
 
+Bot api current: 4.1
+
 - Getting updates
   - ✅ Update
   - ✅ getUpdates
@@ -82,7 +84,7 @@
   - ✅ getChatMember
   - ✅ setChatStickerSet
   - ✅ deleteChatStickerSet
-  - ❌ answerCallbackQuery
+  - ✅ answerCallbackQuery
 - Updating messages
   - ✅ editMessageText
   - ✅ editMessageCaption
@@ -165,3 +167,4 @@
   - ✅ setGameScore
   - ✅ getGameHighScores
   - ✅ GameHighScore
+  
